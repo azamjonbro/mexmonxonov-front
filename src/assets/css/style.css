@@ -1,0 +1,139 @@
+@import "./fonts.css";
+
+:root {
+  /* ===============================
+     BRAND / PRIMARY COLORS
+  =============================== */
+  --primary-100: #FFF7EA;   /* eng och */
+  --primary-200: #FAF3E1;   /* asosiy light */
+  --primary-300: #F5E7C6;   /* surface */
+  --primary-400: #FF9A5C;   /* soft accent */
+  --primary-500: #FF6D1F;   /* main accent */
+  --primary-600: #E65F17;   /* hover */
+  --primary-700: #C94F12;   /* active */
+  --primary-800: #9E3E0D;   /* dark accent */
+
+  /* ===============================
+     BACKGROUND COLORS
+  =============================== */
+  --bg-main: #FAF3E1;
+  --bg-surface: #F5E7C6;
+  --bg-muted: #EFE6D0;
+  --bg-dark: #222222;
+
+  /* ===============================
+     TEXT COLORS
+  =============================== */
+  --text-primary: #222222;
+  --text-secondary: #4B4B4B;
+  --text-muted: #7A7A7A;
+  --text-invert: #FFFFFF;
+  --text-accent: #FF6D1F;
+
+  /* ===============================
+     BUTTONS
+  =============================== */
+  --btn-primary-bg: var(--primary-500);
+  --btn-primary-hover: var(--primary-600);
+  --btn-primary-active: var(--primary-700);
+  --btn-primary-text: #FFFFFF;
+
+  --btn-secondary-bg: var(--primary-300);
+  --btn-secondary-hover: var(--primary-200);
+  --btn-secondary-text: var(--text-primary);
+
+  --btn-disabled-bg: #E0D8C4;
+  --btn-disabled-text: #9A9A9A;
+
+  /* ===============================
+     BORDERS
+  =============================== */
+  --border-default: #E2D8BF;
+  --border-muted: #D4C9AD;
+  --border-accent: var(--primary-500);
+  --border-hover: var(--primary-600);
+  --border-focus: var(--primary-500);
+
+  /* ===============================
+     INPUTS
+  =============================== */
+  --input-bg: #FFFFFF;
+  --input-text: var(--text-primary);
+  --input-placeholder: #9A9A9A;
+  --input-border: var(--border-default);
+  --input-hover-border: var(--primary-400);
+  --input-focus-border: var(--primary-500);
+
+  /* ===============================
+     STATES
+  =============================== */
+  --success: #16A34A;
+  --success-bg: #E7F8EE;
+
+  --error: #DC2626;
+  --error-bg: #FDE8E8;
+
+  --warning: #FF6D1F;
+  --warning-bg: #FFF1E8;
+
+  --info: #2563EB;
+  --info-bg: #E8F0FE;
+
+  /* ===============================
+     SHADOWS
+  =============================== */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-sm: 0 4px 10px rgba(34,34,34,0.12);
+  --shadow-md: 0 8px 24px rgba(34,34,34,0.18);
+  --shadow-lg: 0 16px 40px rgba(34,34,34,0.25);
+
+  /* ===============================
+     EFFECTS
+  =============================== */
+  --focus-ring: 0 0 0 3px rgba(255,109,31,0.4);
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* ===============================
+   BASE STYLES
+=============================== */
+
+body {
+  font-family: 'Roboto', system-ui, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-primary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+input, textarea {
+  font-family: inherit;
+  outline: none;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--input-placeholder);
+}
