@@ -3,11 +3,7 @@
     <nav class="container nav-container">
       <!-- LOGO -->
       <router-link to="/" class="brand">
-        <img
-          src="../assets/images/edit.png"
-          alt="logo"
-          class="brand__img"
-        />
+        <img src="../assets/images/edit.png" alt="logo" class="brand__img" />
       </router-link>
       <!-- LINKS -->
       <ul class="nav-links" :class="{ 'is-open': menuOpen }">
@@ -45,6 +41,12 @@
             <li @click="changeLang('ru')">Русский</li>
           </ul>
         </div>
+        <div class="darkmode">
+          <button class="theme-btn" @click="toggleTheme">
+            <span v-if="theme === 'light'">🌙</span>
+            <span v-else>☀️</span>
+          </button>
+        </div>
         <button class="btn btn--ghost">Login</button>
         <button class="btn btn--solid">Sign Up</button>
         <!-- BURGER -->
@@ -64,10 +66,12 @@ export default {
       menuOpen: false,
       langOpen: false,
       currentLang: localStorage.getItem("lang") || "uz",
+       theme: localStorage.getItem("theme") || "light",
     };
   },
   mounted() {
     document.addEventListener("click", this.closeLang);
+    this.applyTheme(this.theme);
   },
   beforeUnmount() {
     document.removeEventListener("click", this.closeLang);
@@ -90,6 +94,21 @@ export default {
       if (lang === "en") root.style.setProperty("--primary-400", "#3B82F6");
       if (lang === "ru") root.style.setProperty("--primary-400", "#DC2626");
       this.langOpen = false;
+    },
+     toggleTheme() {
+      this.theme = this.theme === "light" ? "dark" : "light";
+      localStorage.setItem("theme", this.theme);
+      this.applyTheme(this.theme);
+    },
+
+    applyTheme(theme) {
+      const root = document.documentElement;
+
+      if (theme === "dark") {
+        root.classList.add("dark");
+      } else {
+        root.classList.remove("dark");
+      }
     },
   },
 };
@@ -118,7 +137,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 0;
+  padding: 12px;
   gap: 16px;
 }
 .brand__img {
@@ -130,9 +149,6 @@ export default {
   align-items: center;
   gap: 24px;
 }
-
-
-
 
 /* ================= LINKS ================= */
 .nav-link {
@@ -250,14 +266,14 @@ export default {
 }
 
 /* dropdown */
-.lang{
-    position: relative;
+.lang {
+  position: relative;
 }
 .lang-menu {
   position: absolute;
   right: -100%;
   top: calc(100% + 25px);
-  background: color-mix(in srgb, var(--bg-main) 22%, transparent);
+  background: color-mix(in srgb, var(--bg-main) 100%, transparent);
   backdrop-filter: blur(16px);
 
   border: 1px solid color-mix(in srgb, var(--border-default) 60%, transparent);
@@ -292,20 +308,53 @@ export default {
 /* ================= OVERLAY ================= */
 .overlay {
   position: fixed;
+  width: 100vw;
+  height: 100vh;
   inset: 0;
   background: rgba(0, 0, 0, 0.35);
 }
 
 /* ================= MOBILE ================= */
+
 @media (max-width: 768px) {
-  .nav-links {
-    background: color-mix(in srgb, var(--bg-main) 22%, transparent);
-    border: 1px solid color-mix(in srgb, var(--border-default) 60%, transparent);
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
   }
 
-  .nav-link.router-link-exact-active {
-    background: color-mix(in srgb, var(--bg-main) 30%, transparent);
-    border-radius: 12px;
+  .nav-links {
+    position: fixed;
+    top: 90vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background: color-mix(in srgb, var(--bg-main) 95%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border-default) 60%, transparent);
+    backdrop-filter: blur(16px);
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 48px;
+
+    border-radius: 20px;
+    z-index: 100;
+  }
+  .nav-links li:first-child .nav-link {
+    font-size: 0;
+    position: relative;
+  }
+  .nav-links li:first-child .nav-link::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    background-image: url("@/assets/icons/home.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }
 </style>

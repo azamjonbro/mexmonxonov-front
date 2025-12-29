@@ -96,14 +96,118 @@
   --transition-normal: 0.3s ease;
 }
 
+:root.dark {
+  /* ===============================
+     BRAND / PRIMARY (SAL SOVUQROQ)
+  =============================== */
+  --primary-100: #2A1F16;
+  --primary-200: #3A2A1D;
+  --primary-300: #4A3324;
+  --primary-400: #FF9A5C;
+  --primary-500: #FF7A2F;
+  --primary-600: #FF8C4A;
+  --primary-700: #FF9F66;
+  --primary-800: #FFC09A;
+
+  /* ===============================
+     BACKGROUNDS
+  =============================== */
+  --bg-main: #0E0E0E;
+  --bg-surface: #161616;
+  --bg-muted: #1F1F1F;
+  --bg-dark: #0A0A0A;
+
+  /* ===============================
+     TEXT
+  =============================== */
+  --text-primary: #F5F5F5;
+  --text-secondary: #CFCFCF;
+  --text-muted: #9B9B9B;
+  --text-invert: #0E0E0E;
+  --text-accent: var(--primary-500);
+
+  /* ===============================
+     BUTTONS
+  =============================== */
+  --btn-primary-bg: var(--primary-500);
+  --btn-primary-hover: var(--primary-600);
+  --btn-primary-active: var(--primary-700);
+  --btn-primary-text: #0E0E0E;
+
+  --btn-secondary-bg: var(--bg-surface);
+  --btn-secondary-hover: var(--bg-muted);
+  --btn-secondary-text: var(--text-primary);
+
+  --btn-disabled-bg: #2A2A2A;
+  --btn-disabled-text: #6B6B6B;
+
+  /* ===============================
+     BORDERS
+  =============================== */
+  --border-default: #2A2A2A;
+  --border-muted: #333333;
+  --border-accent: var(--primary-500);
+  --border-hover: var(--primary-600);
+  --border-focus: var(--primary-500);
+
+  /* ===============================
+     INPUTS
+  =============================== */
+  --input-bg: #141414;
+  --input-text: var(--text-primary);
+  --input-placeholder: #7A7A7A;
+  --input-border: var(--border-default);
+  --input-hover-border: var(--primary-400);
+  --input-focus-border: var(--primary-500);
+
+  /* ===============================
+     STATES
+  =============================== */
+  --success: #22C55E;
+  --success-bg: rgba(34, 197, 94, 0.15);
+
+  --error: #EF4444;
+  --error-bg: rgba(239, 68, 68, 0.18);
+
+  --warning: #FF9A5C;
+  --warning-bg: rgba(255, 154, 92, 0.18);
+
+  --info: #60A5FA;
+  --info-bg: rgba(96, 165, 250, 0.18);
+
+  /* ===============================
+     SHADOWS (CHUQURROQ)
+  =============================== */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-sm: 0 6px 16px rgba(0,0,0,0.6);
+  --shadow-md: 0 12px 32px rgba(0,0,0,0.7);
+  --shadow-lg: 0 24px 60px rgba(0,0,0,0.85);
+
+  /* ===============================
+     EFFECTS
+  =============================== */
+  --focus-ring: 0 0 0 3px rgba(255,122,47,0.45);
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+}
+
+
 /* ===============================
    BASE STYLES
 =============================== */
-
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   scroll-behavior: smooth;
+}
 body {
   font-family: 'Roboto', system-ui, sans-serif;
   background: var(--bg-main);
   color: var(--text-primary);
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .container {
@@ -136,4 +240,43 @@ input, textarea {
 }
 input::placeholder, textarea::placeholder {
   color: var(--input-placeholder);
+}
+.text-center {
+  text-align: center;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.p-0 {
+  padding: 0 !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-400);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-500);      
+}
+
+
+
+@media (max-width: 768px) {
+   ::-webkit-scrollbar {
+    display: none;
+  }
+  .container {
+    padding: 0 12px;
+  }
 }
