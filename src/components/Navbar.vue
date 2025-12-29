@@ -5,59 +5,76 @@
       <router-link to="/" class="brand">
         <img src="../assets/images/edit.png" alt="logo" class="brand__img" />
       </router-link>
+
       <!-- LINKS -->
       <ul class="nav-links" :class="{ 'is-open': menuOpen }">
         <li>
-          <router-link to="/" class="nav-link" @click="closeMenu"
-            >Home</router-link
-          >
+          <router-link to="/" class="nav-link" @click="closeMenu">
+            {{ $t("home") }}
+          </router-link>
         </li>
         <li>
-          <router-link to="/about" class="nav-link" @click="closeMenu"
-            >About</router-link
-          >
+          <router-link to="/about" class="nav-link" @click="closeMenu">
+            {{ $t("about") }}
+          </router-link>
         </li>
         <li>
-          <router-link to="/services" class="nav-link" @click="closeMenu"
-            >Services</router-link
-          >
+          <router-link to="/services" class="nav-link" @click="closeMenu">
+            {{ $t("services") }}
+          </router-link>
         </li>
         <li>
-          <router-link to="/contact" class="nav-link" @click="closeMenu"
-            >Contact</router-link
-          >
+          <router-link to="/contact" class="nav-link" @click="closeMenu">
+            {{ $t("contact") }}
+          </router-link>
         </li>
       </ul>
+
       <!-- ACTIONS -->
       <div class="actions">
         <!-- LANG -->
         <div class="lang" @click.stop>
           <button class="lang-btn" @click="toggleLang">
-            {{ currentLang.toUpperCase() }} <span class="arrow"></span>
+            {{ $i18n.locale.toUpperCase() }}
+            <span class="arrow"></span>
           </button>
+
           <ul v-if="langOpen" class="lang-menu">
-            <li @click="changeLang('uz')">O‘zbek</li>
-            <li @click="changeLang('en')">English</li>
-            <li @click="changeLang('ru')">Русский</li>
+            <li @click="changeLang('uz')">{{ $t("language.uz") }}</li>
+            <li @click="changeLang('en')">{{ $t("language.en") }}</li>
+            <li @click="changeLang('ru')">{{ $t("language.ru") }}</li>
           </ul>
         </div>
+
+        <!-- DARK MODE -->
         <div class="darkmode">
           <button class="theme-btn" @click="toggleTheme">
             <span v-if="theme === 'light'">🌙</span>
             <span v-else>☀️</span>
           </button>
         </div>
-        <button class="btn btn--ghost">Login</button>
-        <button class="btn btn--solid">Sign Up</button>
+
+        <!-- AUTH -->
+        <button class="btn btn--ghost">
+          {{ $t("login") }}
+        </button>
+        <button class="btn btn--solid">
+          {{ $t("signup") }}
+        </button>
+
         <!-- BURGER -->
         <button class="burger" @click="menuOpen = !menuOpen">
-          <span></span> <span></span> <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
     </nav>
+
     <div v-if="menuOpen" class="overlay" @click="closeMenu"></div>
   </header>
 </template>
+
 <script>
 export default {
   name: "Navbar",
@@ -66,7 +83,7 @@ export default {
       menuOpen: false,
       langOpen: false,
       currentLang: localStorage.getItem("lang") || "uz",
-       theme: localStorage.getItem("theme") || "light",
+      theme: localStorage.getItem("theme") || "light",
     };
   },
   mounted() {
@@ -87,15 +104,11 @@ export default {
       this.langOpen = false;
     },
     changeLang(lang) {
-      this.currentLang = lang;
+      this.$i18n.locale  = lang;
       localStorage.setItem("lang", lang);
-      const root = document.documentElement;
-      if (lang === "uz") root.style.setProperty("--primary-400", "#FDBA2D");
-      if (lang === "en") root.style.setProperty("--primary-400", "#3B82F6");
-      if (lang === "ru") root.style.setProperty("--primary-400", "#DC2626");
       this.langOpen = false;
     },
-     toggleTheme() {
+    toggleTheme() {
       this.theme = this.theme === "light" ? "dark" : "light";
       localStorage.setItem("theme", this.theme);
       this.applyTheme(this.theme);

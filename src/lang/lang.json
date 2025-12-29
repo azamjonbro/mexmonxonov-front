@@ -1,0 +1,41 @@
+{
+  "uz": {
+    "home": "Bosh sahifa",
+    "about": "Biz haqimizda",
+    "services": "Xizmatlar",
+    "contact": "Aloqa",
+    "login": "Kirish",
+    "signup": "Ro‘yxatdan o‘tish",
+    "language": {
+      "uz": "O‘zbek",
+      "ru": "Ruscha",
+      "en": "Inglizcha"
+    }
+  },
+  "ru": {
+    "home": "Главная",
+    "about": "О нас",
+    "services": "Услуги",
+    "contact": "Контакты",
+    "login": "Вход",
+    "signup": "Регистрация",
+    "language": {
+      "uz": "Узбекский",
+      "ru": "Русский",
+      "en": "Английский"
+    }
+  },
+  "en": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "login": "Login",
+    "signup": "Sign Up",
+    "language": {
+      "uz": "Uzbek",
+      "ru": "Russian",
+      "en": "English"
+    }
+  }
+}
