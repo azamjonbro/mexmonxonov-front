@@ -16,18 +16,23 @@
     </div>
   </section>
 </template>
-
 <script>
 export default { name: "StatsSection" };
 </script>
-
-<style scoped>
+<style >
 .stats {
-  padding: 60px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--bg-muted);
+  border-radius: 18px;
+
+  
 }
 
 .stats-row {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   text-align: center;

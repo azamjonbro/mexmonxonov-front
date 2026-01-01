@@ -32,6 +32,12 @@
 
       <!-- ACTIONS -->
       <div class="actions">
+        <div class="darkmode">
+          <button class="theme-btn" @click="toggleTheme">
+            <span v-if="theme === 'light'">🌙</span>
+            <span v-else>☀️</span>
+          </button>
+        </div>
         <!-- LANG -->
         <div class="lang" @click.stop>
           <button class="lang-btn" @click="toggleLang">
@@ -47,31 +53,19 @@
         </div>
 
         <!-- DARK MODE -->
-        <div class="darkmode">
-          <button class="theme-btn" @click="toggleTheme">
-            <span v-if="theme === 'light'">🌙</span>
-            <span v-else>☀️</span>
-          </button>
-        </div>
+        
 
         <!-- AUTH -->
-        <button class="btn btn--ghost">
+        <button class="btn btn--ghost nav-btn">
           {{ $t("login") }}
         </button>
-        <button class="btn btn--solid">
+        <button class="btn btn--solid nav-btn">
           {{ $t("signup") }}
         </button>
 
-        <!-- BURGER -->
-        <button class="burger" @click="menuOpen = !menuOpen">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+
       </div>
     </nav>
-
-    <div v-if="menuOpen" class="overlay" @click="closeMenu"></div>
   </header>
 </template>
 
@@ -330,6 +324,8 @@ export default {
 /* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
+
+  /* BURGER */
   .burger {
     display: flex;
     flex-direction: column;
@@ -337,37 +333,84 @@ export default {
     cursor: pointer;
   }
 
+  /* BOTTOM NAV */
   .nav-links {
-    position: fixed;
-    top: 90vh;
+    position: fixed !important;
+
+    bottom: -88.5vh; /* 👈 PASTGA YOPISHDI */
     left: 50%;
     transform: translateX(-50%);
+    
     background: color-mix(in srgb, var(--bg-main) 95%, transparent);
     border: 1px solid color-mix(in srgb, var(--border-default) 60%, transparent);
     backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0,0,0,.6);
     display: flex;
-    justify-content: center;
-    width: 80%;
-    height: 48px;
-
-    border-radius: 20px;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    border-radius: 28px;
     z-index: 100;
   }
-  .nav-links li:first-child .nav-link {
+
+  .nav-links li {
+    list-style: none;
+  }
+
+  /* MATNNI YASHIRAMIZ */
+  .nav-link {
     font-size: 0;
     position: relative;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
   }
-  .nav-links li:first-child .nav-link::after {
+
+  /* HOME */
+  .nav-links li:nth-child(1) .nav-link::after {
     content: "";
     position: absolute;
-    top: -10px;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: transparent;
-    background-image: url("@/assets/icons/home.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
+    inset: 0;
+    background: url("@/assets/icons/home.svg") no-repeat center/contain;
+  }
+
+  /* ABOUT */
+  .nav-links li:nth-child(2) .nav-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* background: url("@/assets/icons/info.svg") no-repeat center/contain; */
+  }
+
+  /* SERVICES */
+  .nav-links li:nth-child(3) .nav-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("@/assets/icons/ranking.svg") no-repeat center/contain;
+  }
+
+  /* CONTACT */
+  .nav-links li:nth-child(4) .nav-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* background: url("@/assets/icons/contact.svg") no-repeat center/contain; */
+  }
+  .nav-link::after{
+    width: 24px;
+    height: 24px;
   }
 }
+@media(max-width:480px){
+  .nav-btn{
+    display: none;
+  }
+  .lang-menu{
+    position: absolute;
+    right: 0%;
+  }
+}
+
 </style>

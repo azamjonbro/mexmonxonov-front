@@ -270,7 +270,10 @@ input::placeholder, textarea::placeholder {
   background: var(--primary-500);      
 }
 
-
+.statistics{
+  display: flex;
+  gap: 24px;
+}
 
 @media (max-width: 768px) {
    ::-webkit-scrollbar {
@@ -280,3 +283,4 @@ input::placeholder, textarea::placeholder {
     padding: 0 12px;
   }
 }
+

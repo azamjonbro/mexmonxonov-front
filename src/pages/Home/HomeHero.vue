@@ -4,18 +4,17 @@
       <!-- LEFT -->
       <div class="hero-content">
         <h1 class="hero-title">
-          Biz bilan albatta
-          <span>talaba bo'lasiz</span>
+          {{ $t("hero.title") }}
+          <span>{{ $t("hero.title-yellow") }}</span>
         </h1>
 
         <p class="hero-text">
-          Mexmonxonov o‘quv markazi — zamonaviy videodarslar,
-          aniq yo‘nalish va ishonchli natija.
+          {{ $t("hero.subtitle") }}
         </p>
 
         <div class="hero-actions">
-          <button class="btn btn--solid">Boshlash</button>
-          <button class="btn btn--outline">Kurslar</button>
+          <button class="btn btn--solid">{{ $t("hero.start") }}</button>
+          <button class="btn btn--outline">{{ $t("hero.kurs") }}</button>
         </div>
       </div>
 
